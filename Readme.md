@@ -10,13 +10,13 @@ sound, scalable design.
 
 ## Setup
 
-Please follow the instructions given in the [environment](https://github.gatech.edu/gios-fall-19/environment)
+Please follow the instructions given in the [environment](https://github.gatech.edu/gios-fall19/environment)
 repository for setting up your development/test environment.
 
 You can clone the code in this repository with the command
 
 ```console
-$ git clone https://github.gatech.edu/gios-fall-19/pr1.git
+$ git clone https://github.gatech.edu/gios-fall19/pr1.git
 ```
 
 We **strongly** recommend that you disable pushes to the class repository: if you do
