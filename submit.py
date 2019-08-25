@@ -106,7 +106,7 @@ def main():
     # copy submit script
     try:
         if path_map[args.quiz] != '.': shutil.copyfile('../submit.py','./submit.py')
-        files_map[quiz].append('submit.py')
+        if 'submit.py' not in files_map[quiz]: files_map[quiz].append('submit.py')
     except: pass
     
     #Create cksum file
