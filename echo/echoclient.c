@@ -9,7 +9,7 @@
 #include <netinet/in.h>
 #include <sys/types.h>
 
-/* Be prepared accept a response of this length */
+/* A buffer large enough to contain the longest allowed string */
 #define BUFSIZE 1219
 
 #define USAGE                                                                       \
