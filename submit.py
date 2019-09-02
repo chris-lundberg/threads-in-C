@@ -6,9 +6,15 @@ import hashlib
 import subprocess
 import glob
 import shutil
-from nelson.gtomscs import submit
+from nelson.gtomscs import submit, default_app_data_dir
+
 # see https://github.com/udacity/nelson for nelson information (OMSCS specific)
 
+def check_for_jwt():
+    jwt_path = '{}/gtomscs_jwt'.format(default_app_data_dir())
+    if not os.path.exists(jwt_path): print('Nelson looks for {} but it does not appear to be there'.format(jwt_path))
+
+check_for_jwt()
 cksum_file_name = "cksum.txt"
 
 #Deletes cksum_file_name text file
