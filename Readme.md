@@ -401,7 +401,7 @@ be able to use your protocol implementation files from Part 1.
 * gfclient-student.h - (modify and submit) header file for students to modify - submitted for client only
 * gfclient_download.c - (modify and submit) the main file for the client
   workload generator.  Illustrates use of gfclient library.
-* gfserver.c - (do not modify) implementation of the gfserver interface.
+* gfserver.o - (do not modify) implementation of the gfserver interface.
 * gfserver.h - (do not modify) header file for the gfserver library.
 * gfserver-student.h - (modify and submit) header file for students to modify - submitted for server only
 * gfserver_main.c (modify and submit) the main file for the Getfile server.
