@@ -71,7 +71,6 @@ int content_get(const char *key){
 		if ( cmp < 0) hi = mid - 1;
 		else if (cmp > 0) lo = mid + 1;
 		else{
-			lseek(items[mid].fildes, 0, SEEK_SET);
 			return items[mid].fildes;
 		} 
 	}
