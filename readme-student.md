@@ -1,16 +1,7 @@
-# Project README file
+## README
 
-This is **YOUR** Readme file.
+# Project Description
 
-**Note** - if you prefer, you may submit a PDF version of this readme file.  Simply create a file called **readme-student.pdf** in the same directory.  When you submit, one or the other (or both) of these files will be submitted.  This is entirely optional.
-
-**Note: the `submit.py` script will only submit files named readme-student.md and readme-student.pdf**
-
-## Project Description
-
-Your README file is your opportunity to demonstrate to us that you understand the project.  Ideally, this
-should be a guide that someone not familiar with the project could pick up and read and understand
-what you did, and why you did it.
 
 Specifically, we will evaluate your submission based upon:
 
