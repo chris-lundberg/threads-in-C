@@ -26,13 +26,8 @@ Specifically, we will evaluate your submission based upon:
   Thus, this would include articles on Stack Overflow, any repositories you referenced on github.com, any
   books you used, any manual pages you consulted.
 
+# References
 
-In addition, you have an opportunity to earn extra credit.  To do so, we want to see something that
-adds value to the project.  Observing that there is a problem or issue _is not enough_.  We want
-something that is easily actioned.  Examples of this include:
+* _Operating Systems: Three Easy Pieces_ - Arpaci-Dusseau, Remzi 
+* 
 
-- Suggestions for additional tests, along with an explanation of _how_ you envision it being tested
-- Suggested revisions to the instructions, code, comments, etc.  It's not enough to say "I found
-  this confusing" - we want you to tell us what you would have said _instead_.
-
-While we do award extra credit, we do so sparingly.
