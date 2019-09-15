@@ -34,6 +34,8 @@ int main(int argc, char **argv)
 
     setbuf(stdout, NULL); // disable buffering
 
+    printf("Testing 1, 2, 3: This is the server\n");
+
     // Parse and set command line arguments
     while ((option_char = getopt_long(argc, argv, "p:hf:x", gLongOptions, NULL)) != -1)
     {

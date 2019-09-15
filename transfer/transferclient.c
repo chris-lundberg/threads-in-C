@@ -38,6 +38,8 @@ int main(int argc, char **argv)
 
     setbuf(stdout, NULL);
 
+    printf("Testing 1, 2, 3: This is the Client\n");
+
     // Parse and set command line arguments
     while ((option_char = getopt_long(argc, argv, "s:p:o:hx", gLongOptions, NULL)) != -1)
     {
