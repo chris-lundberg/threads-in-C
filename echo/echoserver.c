@@ -85,18 +85,22 @@ int main(int argc, char **argv) {
     /* Listen on the connection and accept connection*/
     listen(mysock, maxnpending);
     clilen = sizeof(client);
-    newsock = accept(mysock, (struct sockaddr *) &client,(socklen_t *) &clilen);
+
+    while(1) {
+      newsock = accept(mysock, (struct sockaddr *) &client,(socklen_t *) &clilen);
      
-    if(newsock < 0)
-       printf("ERROR on accept\n");
+      if(newsock < 0)
+         printf("ERROR on accept\n");
 
-    recv(newsock, buffer, BUFSIZE, 0);
+      bzero((char *)&buffer, strlen(buffer));
 
-    message = buffer;
-    message[strlen(buffer)] = 0;
-    printf("%s\n", message);
+      recv(newsock, buffer, BUFSIZE, 0);
 
-    send(newsock, message, strlen(message), 0);
+      message = buffer;
+      message[strlen(buffer)] = 0;
+      printf("%s\n", message);
 
+      send(newsock, message, strlen(message), 0);
+    }
     return 0;
 }
