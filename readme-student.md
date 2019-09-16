@@ -1,7 +1,6 @@
 ## README
 
-# Project Description
-
+# Instructions
 
 Specifically, we will evaluate your submission based upon:
 
@@ -17,8 +16,15 @@ Specifically, we will evaluate your submission based upon:
   Thus, this would include articles on Stack Overflow, any repositories you referenced on github.com, any
   books you used, any manual pages you consulted.
 
+# Project Design
+
+# Implementation
+
+# Debugging and Testing
+
 # References
 
 * _Operating Systems: Three Easy Pieces_ - Arpaci-Dusseau, Remzi 
-* 
+* [_Sockets Tutorial_](http://www.cs.rpi.edu/~moorthy/Courses/os98/Pgms/socket.html) - Ingalls, Robert 
+* [_Server and Client Example Code_](https://github.com/zx1986/xSinppet/tree/master/unix-socket-practice) 
 

@@ -33,6 +33,10 @@ static struct option gLongOptions[] = {
 int main(int argc, char **argv)
 {
     int option_char = 0;
+    int mysock;
+    struct sockaddr_in serv_addr;
+    struct hostent *server;
+    long hostAddress;
     char *hostname = "localhost";
     unsigned short portno = 19121;
     char *message = "Hello World!!";
@@ -81,6 +85,19 @@ int main(int argc, char **argv)
         exit(1);
     }
 
-    /* Socket Code Here */
+    /*Set the fields in serv_addr*/
+    server = gethostbyname(hostname);
+    memcpy(&hostAddress,server->h_addr,server->h_length);
+   
+    serv_addr.sin_family = AF_INET;
+    serv_addr.sin_port = htons(portno);
+    serv_addr.sin_addr.s_addr = hostAddress;
 
+    /*Instantiate socket and connect to the server*/
+    mysock = socket(AF_INET, SOCK_STREAM, 0);
+    if (mysock < 0) 
+        error("ERROR opening socket");
+
+    if(connect(mysock,(struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
+	error("ERROR connecting");
 }
