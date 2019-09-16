@@ -36,7 +36,7 @@ int main(int argc, char **argv)
     int mysock;
     struct sockaddr_in serv_addr;
     struct hostent *server;
-   /* long hostAddress;*/
+    char buffer[BUFSIZE];
     char *hostname = "localhost";
     unsigned short portno = 19121;
     char *message = "Hello World!!";
@@ -104,5 +104,12 @@ int main(int argc, char **argv)
 	printf("ERROR connecting");
 
     /*Send message to server*/
-   write(mysock, message, strlen(message)); 
+    write(mysock, message, strlen(message));
+
+    /*Read server response*/
+    read(mysock, buffer, BUFSIZE);
+    buffer[strlen(message)] = 0;
+    printf("%s\n", buffer);
+    
 }
+
