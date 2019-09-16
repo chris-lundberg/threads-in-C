@@ -36,7 +36,7 @@ int main(int argc, char **argv)
     int mysock;
     struct sockaddr_in serv_addr;
     struct hostent *server;
-    long hostAddress;
+   /* long hostAddress;*/
     char *hostname = "localhost";
     unsigned short portno = 19121;
     char *message = "Hello World!!";
@@ -85,19 +85,24 @@ int main(int argc, char **argv)
         exit(1);
     }
 
-    /*Set the fields in serv_addr*/
+    /*Instatiate server info*/
     server = gethostbyname(hostname);
-    memcpy(&hostAddress,server->h_addr,server->h_length);
-   
+      
+    bzero((char *) &serv_addr, sizeof(serv_addr));
     serv_addr.sin_family = AF_INET;
     serv_addr.sin_port = htons(portno);
-    serv_addr.sin_addr.s_addr = hostAddress;
+    bcopy((char *)server->h_addr,
+          (char *)&serv_addr.sin_addr.s_addr,
+	  server->h_length);
 
     /*Instantiate socket and connect to the server*/
     mysock = socket(AF_INET, SOCK_STREAM, 0);
     if (mysock < 0) 
-        error("ERROR opening socket");
+        printf("ERROR opening socket");
 
     if(connect(mysock,(struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
-	error("ERROR connecting");
+	printf("ERROR connecting");
+
+    /*Send message to server*/
+   write(mysock, message, strlen(message)); 
 }
