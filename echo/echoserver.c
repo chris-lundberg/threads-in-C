@@ -78,9 +78,12 @@ int main(int argc, char **argv) {
     server.sin_family = AF_INET;
     server.sin_addr.s_addr = INADDR_ANY;
     server.sin_port = htons(portno);
+
+    int option = 1;
+    setsockopt(mysock, SOL_SOCKET, SO_REUSEADDR, &option, sizeof(option));
         
-    if(bind(mysock, (struct sockaddr *) &server, sizeof(server)) < 0)
-	    printf("ERROR on binding\n");
+    if(bind(mysock, (struct sockaddr *) &server, (socklen_t) sizeof(server)) < 0)
+	    printf("ERROR on binding: Chris's Code Sucks");
 
     /* Listen on the connection and accept connection*/
     listen(mysock, maxnpending);
@@ -90,7 +93,7 @@ int main(int argc, char **argv) {
       newsock = accept(mysock, (struct sockaddr *) &client,(socklen_t *) &clilen);
      
       if(newsock < 0)
-         printf("ERROR on accept\n");
+         printf("ERROR on accept");
 
       bzero((char *)&buffer, strlen(buffer));
 
@@ -98,7 +101,7 @@ int main(int argc, char **argv) {
 
       message = buffer;
       message[strlen(buffer)] = 0;
-      printf("%s\n", message);
+      printf("%s", message);
 
       send(newsock, message, strlen(message), 0);
     }

@@ -109,6 +109,6 @@ int main(int argc, char **argv)
     /*Read server response*/
     recv(mysock, buffer, BUFSIZE, 0);
     buffer[strlen(message)] = 0;
-    printf("%s\n", buffer);
+    printf("%s", buffer);
 }
 
