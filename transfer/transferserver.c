@@ -98,20 +98,24 @@ int main(int argc, char **argv)
       if(newsock < 0)
          printf("ERROR on accept");
 
-      FILE *outfile = fopen(filename, "r");
+      FILE *outfile = fopen(filename, "r+");
 
-      bzero(buffer, BUFSIZE); 
-      int block_size; 
-      while((block_size = fread(buffer, sizeof(char), BUFSIZE, outfile))>0){
+      bzero(buffer, BUFSIZE);
+
+      size_t  block_size;
+
+      while((block_size = fread(buffer, 1, sizeof(buffer), outfile)) > 0){
      
              if(send(newsock, buffer, block_size, 0) < 0){
 	                printf("ERROR: Failed to Send File");
 	                exit(1);
-                }
+	     }
 
       bzero(buffer, BUFSIZE);
 
-      }	      
+      }
+      fclose(outfile);
+      shutdown(newsock, 2);      
     }
     return 0;
 }

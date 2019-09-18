@@ -38,7 +38,7 @@ int main(int argc, char **argv)
     int mysock;
     struct sockaddr_in server;
     struct hostent *host;
-   /* char buffer[BUFSIZE];*/
+    char buffer[BUFSIZE];
  
     setbuf(stdout, NULL);
 
@@ -102,13 +102,19 @@ int main(int argc, char **argv)
     if(connect(mysock,(struct sockaddr *)&server, sizeof(server)) < 0)
 	printf("ERROR connecting");
 
-    /*Send and receive message code
-    send(mysock, message, strlen(message), 0);
+    /*Send and write file*/
+    FILE *infile = fopen(filename, "a");
+    size_t nread;
 
-    recv(mysock, buffer, BUFSIZE, 0);
-    buffer[strlen(message)] = 0;
-    printf("%s", buffer);
-    */
+    while((nread = recv(mysock, buffer, BUFSIZE, 0)) > 0){
+   
+	   fwrite(buffer, 1, nread,infile);
+
+    }
+   
+   fclose(infile); 
+
+   return 0; 
 }
 
 
