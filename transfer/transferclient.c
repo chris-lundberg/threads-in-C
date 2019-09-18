@@ -35,10 +35,12 @@ int main(int argc, char **argv)
     char *hostname = "localhost";
     unsigned short portno = 19121;
     char *filename = "cs6200.txt";
-
+    int mysock;
+    struct sockaddr_in server;
+    struct hostent *host;
+   /* char buffer[BUFSIZE];*/
+ 
     setbuf(stdout, NULL);
-
-    printf("Testing 1, 2, 3: This is the Client\n");
 
     // Parse and set command line arguments
     while ((option_char = getopt_long(argc, argv, "s:p:o:hx", gLongOptions, NULL)) != -1)
@@ -82,5 +84,31 @@ int main(int argc, char **argv)
         exit(1);
     }
 
-    /* Socket Code Here */
+    /*Instatiate server info*/
+    host = gethostbyname(hostname);
+      
+    bzero((char *) &server, sizeof(server));
+    server.sin_family = AF_INET;
+    server.sin_port = htons(portno);
+    bcopy((char *)host->h_addr,
+          (char *)&server.sin_addr.s_addr,
+	  host->h_length);
+
+    /*Instantiate socket and connect to the server*/
+    mysock = socket(AF_INET, SOCK_STREAM, 0);
+    if (mysock < 0) 
+        printf("ERROR opening socket");
+
+    if(connect(mysock,(struct sockaddr *)&server, sizeof(server)) < 0)
+	printf("ERROR connecting");
+
+    /*Send and receive message code
+    send(mysock, message, strlen(message), 0);
+
+    recv(mysock, buffer, BUFSIZE, 0);
+    buffer[strlen(message)] = 0;
+    printf("%s", buffer);
+    */
 }
+
+
