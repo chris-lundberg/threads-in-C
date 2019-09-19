@@ -18,6 +18,9 @@ Specifically, we will evaluate your submission based upon:
 
 # Project Design
 
+* State key design decisions
+* List rationale for these decisions
+
 # Implementation
 
 # Debugging and Testing
